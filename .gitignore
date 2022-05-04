@@ -1,0 +1,5 @@
+**/**.out
+**/**.dSYM
+Linklist/Linklist
+.vscode/
+Linklist/SearchLinkList
