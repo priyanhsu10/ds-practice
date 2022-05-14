@@ -88,6 +88,24 @@ void preorder(Node *root)
         preorder(root->right);
     }
 }
+void postorder(Node *root)
+{
+
+    if (root == NULL)
+    {
+        return;
+    }
+    if (root->left)
+    {
+
+        inorder(root->left);
+    }
+    if (root->right != NULL)
+    {
+        inorder(root->right);
+    }
+    cout << root->data << ",";
+}
 void inorder(Node *root)
 {
     if (root == NULL)
