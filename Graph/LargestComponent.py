@@ -15,7 +15,6 @@ def solution():
     largest = 0
     for key in graph.keys():
         count = explore(graph, key, visited)
-        print(count)
         if(count > largest):
             largest = count
 
