@@ -10,10 +10,7 @@ struct Node
 // get node
 Node *getNode(int data)
 {
-    Node *temp = new Node();
-    temp->data = data;
-    temp->left = temp->right = NULL;
-    return temp;
+    mp;
 }
 // insert node in tree
 Node *insertNode(Node *root, int data)
