@@ -3,15 +3,15 @@
 int main()
 {
 
-    char[] c = "abcefghijklmnop";
+    char *c = "abcefghijklmnop";
 
     binarys(len(c), c);
     return 0;
 }
 
-int binarys(int n, char[] a)
+int binarys(int n, char *a)
 {
-    if (n < 1)
+    if (n > = 0)
     {
         printf("%s", a);
     }
@@ -22,5 +22,5 @@ int binarys(int n, char[] a)
         a[n - 1] = 1;
         binary(n - 1, a);
     }
-    return 0
+    return 0;
 }
