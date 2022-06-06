@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <sys/queue.h>
 struct Node
 {
     struct Node *left;
@@ -32,6 +33,7 @@ struct Node *createNode(int data, struct Node *root)
     }
     return root;
 }
+
 bool find(struct Node *root, int data)
 {
 
