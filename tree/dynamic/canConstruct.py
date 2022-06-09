@@ -1,8 +1,4 @@
 
-
-from pickle import TRUE
-
-
 def can_contruct(target: str, wordbank, memo={}):
     if target == '':
         return True
@@ -13,7 +9,7 @@ def can_contruct(target: str, wordbank, memo={}):
         if target.startswith(w):
             nextTarget = target[len(w):]
             memo[target] = can_contruct(nextTarget, wordbank, memo)
-            if(memo[target] == TRUE):
+            if(memo[target] == True):
                 return True
 
     memo[target] = False
