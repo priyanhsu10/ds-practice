@@ -6,7 +6,7 @@ def insert_heap(h: list, number):
     h.append(number)
     l = len(h)-1
     # compare with parent swap
-    p_index = math.ceil(((l-1)/2))
+    p_index = math.floor(((l-1)/2))
     while p_index > -1:
 
         if h[p_index] < h[l]:
