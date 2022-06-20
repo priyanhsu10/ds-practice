@@ -1,4 +1,4 @@
-package tree;
+package javap.programs;
 
 public class Solution {
     public static void main(String[] args) {
