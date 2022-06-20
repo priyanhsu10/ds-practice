@@ -1,5 +1,7 @@
 package javap.sorting;
 
+import java.util.Arrays;
+
 public class MergeSort {
 
     public static void main(String[] args) {
@@ -9,6 +11,7 @@ public class MergeSort {
         l = 0;
         h = arr.length - 1;
         int[] result = getSorted(l, h, arr);
+        Arrays.stream(result).forEach(x -> System.out.println());
     }
 
     private static int[] getSorted(int l, int h, int[] arr) {
@@ -26,7 +29,7 @@ public class MergeSort {
 
     private static int[] merge(int[] arr, int l, int h, int m) {
 
-        int[] c = new int[h + l];
+        int[] c = new int[h + l + 1];
         int j = m;
         int k = 0;
         while (l <= m && j <= h) {
