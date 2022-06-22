@@ -3,54 +3,58 @@ package javap.graphs;
 import java.util.*;
 
 public class Graph {
-    private int v;
+    Map<String, ArrayList<String>> adlist = new HashMap<>();
+    Set<String> visited = new HashSet<>();
 
-    private HashMap<Integer, LinkedList<Integer>> adlist = new HashMap<>();
-
-    public void addAdge(int v, int u) {
-        if (!adlist.containsKey(v)) {
-            adlist.put(v, new LinkedList<>());
+    public void dfs(String node) {
+        if (visited.contains(node)) {
+            return;
         }
-        adlist.get(v).add(u);
-        // if (!adlist.containsKey(u)) {
-        // adlist.put(u, new LinkedList<>());
-        // }
-
-        // adlist.get(u).add(v);
-    }
-
-    public void bfs(int source) {
-
-        Set<Integer> vistied = new HashSet<>();
-        LinkedList<Integer> que = new LinkedList<>();
-        que.add(source);
-        while (!que.isEmpty()) {
-            int value = que.pop();
-            vistied.add(value);
-            System.out.println(value);
-            if (adlist.containsKey(value)) {
-                for (int x : adlist.get(value)) {
-                    if (!vistied.contains(x)) {
-                        que.add(x);
-                    }
-                }
-
+        System.out.println(node);
+        visited.add(node);
+        for (String n : adlist.get(node)) {
+            if (visited.contains(n)) {
+                continue;
             }
 
+            dfs(n);
         }
 
     }
 
     public static void main(String[] args) {
         Graph g = new Graph();
-        g.addAdge(0, 1);
-        g.addAdge(0, 3);
-        g.addAdge(1, 2);
+        ArrayList<List<String>> vertices = new ArrayList<>();
+        vertices.add(Arrays.asList("a", "b"));
+        vertices.add(Arrays.asList("a", "c"));
+        vertices.add(Arrays.asList("c", "e"));
+        vertices.add(Arrays.asList("d", "f"));
 
-        g.addAdge(2, 3);
-        g.addAdge(3, 2);
-        g.addAdge(3, 4);
-        g.bfs(0);
+        g.adlist = getAdListFromVertices(vertices);
+        g.dfs("a");
+
+    }
+
+    public static Map<String, ArrayList<String>> getAdListFromVertices(ArrayList<List<String>> lst) {
+        Map<String, ArrayList<String>> mp = new HashMap<>();
+        lst.forEach(arrayList -> {
+            if (!mp.containsKey(arrayList.get(0))) {
+
+                var l = new ArrayList<String>();
+                mp.put(arrayList.get(0), l);
+
+            }
+            if (!mp.containsKey(arrayList.get(1))) {
+
+                var l = new ArrayList<String>();
+                mp.put(arrayList.get(1), l);
+
+            }
+            mp.get(arrayList.get(0)).add(arrayList.get(1));
+            mp.get(arrayList.get(1)).add(arrayList.get(0));
+
+        });
+        return mp;
     }
 
 }
