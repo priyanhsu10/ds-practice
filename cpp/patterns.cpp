@@ -242,6 +242,30 @@ void patern9(int n)
     }
 }
 
+// Rhombus pattern
+// 5
+//         * * * * *
+//       * * * * *
+//     * * * * *
+//   * * * * *
+// * * * * *
+void patern10(int n)
+{
+
+    for (int i = 1; i <= n; i++)
+    {
+
+        for (int s = 1; s <= n - i; s++)
+        {
+            cout << "  ";
+        }
+        for (int j = 1; j <= n; j++)
+        {
+            cout << "* ";
+        }
+        cout << endl;
+    }
+}
 int main()
 {
     // int row;
@@ -257,5 +281,6 @@ int main()
     // patern6(n);
     // patern7(n);
     // patern8(n);
-    patern9(n);
+    // patern9(n);
+    patern10(n);
 }
