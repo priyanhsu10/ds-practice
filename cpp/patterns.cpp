@@ -266,6 +266,126 @@ void patern10(int n)
         cout << endl;
     }
 }
+// number pattern
+// 5
+//     1
+//    1 2
+//   1 2 3
+//  1 2 3 4
+// 1 2 3 4 5
+void patern11(int n)
+{
+
+    for (int i = 1; i <= n; i++)
+    {
+
+        for (int s = n - i; s >= 1; s--)
+        {
+            cout << " ";
+        }
+        for (int j = 1; j <= i; j++)
+        {
+            cout << j << " ";
+        }
+        cout << endl;
+    }
+}
+// palindromic pattern
+// n=5
+//         1
+//       2 1 2
+//     3 2 1 2 3
+//   4 3 2 1 2 3 4
+// 5 4 3 2 1 2 3 4 5
+void pattern12(int n)
+{
+
+    for (int i = 1; i <= n; i++)
+    {
+        for (int s = n - i; s >= 1; s--)
+        {
+            cout << "  ";
+        }
+        for (int j = i; j >= 1; j--)
+        {
+            cout << j << " ";
+        }
+        for (int j = 2; j <= i; j++)
+        {
+            cout << j << " ";
+        }
+        cout << endl;
+    }
+}
+// star patern
+// n=4
+//       *
+//     * * *
+//   * * * * *
+// * * * * * * *
+// * * * * * * *
+//   * * * * *
+//     * * *
+//       *
+void pattern13(int n)
+{
+    // upper part
+    //       *
+    //     * * *
+    //   * * * * *
+    // * * * * * * *
+    for (int i = 1; i <= n; i++)
+    {
+        for (int s = n - i; s >= 1; s--)
+        {
+            cout << "  ";
+        }
+        for (int j = 0; j < 2 * i - 1; j++)
+        {
+            cout << "* ";
+        }
+        cout << endl;
+    }
+    // lower part
+    for (int i = n; i >= 1; i--)
+    {
+        for (int s = n - i; s >= 1; s--)
+        {
+            cout << "  ";
+        }
+        for (int j = 0; j < 2 * i - 1; j++)
+        {
+            cout << "* ";
+        }
+        cout << endl;
+    }
+}
+// zig-Zag pattern
+// n= 9
+//     *       *
+//   *   *   *   *
+// *       *       *
+void pattern14(int n)
+{
+    for (int i = 1; i <= 3; i++)
+    {
+
+        for (int j = 1; j <= n; j++)
+        {
+            int r = i + j;
+
+            if (r % 4 == 0 || (i == 2 && (r == 6 || r == 10)))
+            {
+                cout << "* ";
+            }
+            else
+            {
+                cout << "  ";
+            }
+        }
+        cout << endl;
+    }
+}
 int main()
 {
     // int row;
@@ -282,5 +402,10 @@ int main()
     // patern7(n);
     // patern8(n);
     // patern9(n);
-    patern10(n);
+    // patern10(n);
+    // patern11(n);
+    // pattern12(n);
+    // pattern13(n);
+    pattern14(n);
+    return 0;
 }
