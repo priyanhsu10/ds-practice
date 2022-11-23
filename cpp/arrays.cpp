@@ -123,10 +123,8 @@ bool binarySearch(int ar[], int n, int key)
     }
     return false;
 }
-int main()
+void performBSearch()
 {
-    // minmax();
-    // learnerSearch();
     int ar[] = {1,
                 2,
                 4,
@@ -156,5 +154,104 @@ int main()
     {
         cout << "not present";
     }
+}
+void bublesort(int ar[], int n)
+{
+
+    for (int i = n - 1; i > 0; i--)
+    {
+        for (int j = 0; j <= i; j++)
+        {
+            if (ar[j] > ar[j + 1])
+            {
+
+                // swap
+                int temp = ar[j];
+                ar[j] = ar[j + 1];
+                ar[j + 1] = temp;
+            }
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cout << ar[i] << " ";
+    }
+}
+void insertionSort(int ar[], int n)
+{
+    cout << "insertion sort" << endl;
+    for (int i = 1; i < n; i++)
+    {
+
+        int j = i;
+        while (j > 0 && ar[j] < ar[j - 1])
+        {
+
+            // swap a[j] and a[j-1]
+            int temp = ar[j];
+            ar[j] = ar[j - 1];
+            ar[j - 1] = temp;
+            j--;
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cout << ar[i] << " ";
+    }
+}
+void selectionSort(int ar[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        /* cintode */
+
+        for (int j = i + 1; j < n; j++)
+        {
+            /* code */
+            if (ar[j] < ar[i])
+            {
+                // swap
+                int temp = ar[j];
+                ar[j] = ar[i];
+                ar[i] = temp;
+            }
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cout << ar[i] << " ";
+    }
+}
+void performSort()
+{
+    int ar[] = {
+        6,
+        4,
+        235,
+        623,
+        1000,
+        7,
+        30,
+        1,
+        2,
+        45,
+    };
+    cout << "given array" << endl;
+    for (int i = 0; i < 10; i++)
+    {
+        cout << ar[i] << " ";
+    }
+    cout << endl;
+    // selectionSort(ar, 10);
+    // bublesort(ar, 10);
+    insertionSort(ar, 10);
+}
+
+int main()
+{
+    // minmax();
+    // learnerSearch();
+    // performBSearch();
+    performSort();
     return 0;
 }
