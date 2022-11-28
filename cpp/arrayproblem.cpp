@@ -77,8 +77,41 @@ void recordBreaker(int ar[], int n)
     }
 }
 
-// subsequence
-// number of subquence of an array with n element =2^n
+// problem 3 first repeating element
+
+void firstRepeatingElement(int ar[], int n)
+{
+
+    int minindex = INT_MAX;
+
+    int indar[n];
+    for (int i = 0; i < n; i++)
+    {
+        indar[i] = -1;
+    };
+    for (int i = 0; i < n; i++)
+    {
+
+        if (indar[ar[i]] > -1)
+        {
+
+            minindex = min(indar[ar[i]], minindex);
+        }
+        else
+        {
+            //  if (indar[ar[i]] == -1)
+            indar[ar[i]] = i;
+        }
+        if (minindex == INT_MAX)
+        {
+            cout << "element are uniq";
+        }
+    }
+    cout << minindex;
+}
+
+//  subsequence
+//  number of subquence of an array with n element =2^n
 
 // note: Every subarray is subsequence but every subsequence is not a subarray
 int main()
@@ -89,7 +122,10 @@ int main()
     // sumOfSubarray(a, (int)(sizeof(a) / sizeof(int)));
     // int a[] = {10, 7, 4, 6, 8, 10, 11};
     // arithmaticArray(a, (int)(sizeof(a) / sizeof(int)));
-    int a[] = {1, 2, 0, 7, 2, 0, 2, 2};
-    recordBreaker(a, (int)(sizeof(a) / sizeof(int)));
+    // int a[] = {1, 2, 0, 7, 2, 0, 2, 2};
+    // recordBreaker(a, (int)(sizeof(a) / sizeof(int)));
+
+    int a[] = {1, 5, 3, 4, 3, 5, 6};
+    firstRepeatingElement(a, (int)(sizeof(a) / sizeof(int)));
     return 0;
 }
