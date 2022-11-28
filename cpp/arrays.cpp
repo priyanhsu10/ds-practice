@@ -252,6 +252,6 @@ int main()
     // minmax();
     // learnerSearch();
     // performBSearch();
-    performSort();
+    // performSort();
     return 0;
 }
