@@ -7,7 +7,19 @@ struct Node
     Node *left;
     Node *right;
 };
-// get node
+
+void inorder(Node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    inorder(root->left);
+    cout << root->data << ",";
+    inorder(root->right);
+}
+// get node¡
 Node *getNode(int data)
 {
     Node *temp = new Node();
@@ -78,15 +90,8 @@ void preorder(Node *root)
     }
     cout << root->data << ",";
 
-    if (root->left != NULL)
-    {
-        preorder(root->left);
-    }
-
-    if (root->right != NULL)
-    {
-        preorder(root->right);
-    }
+    preorder(root->left);
+    preorder(root->right);
 }
 void postorder(Node *root)
 {
@@ -98,34 +103,19 @@ void postorder(Node *root)
     if (root->left)
     {
 
-        inorder(root->left);
+        postorder(root->left);
     }
     if (root->right != NULL)
     {
-        inorder(root->right);
+        postorder(root->right);
     }
     cout << root->data << ",";
 }
-void inorder(Node *root)
-{
-    if (root == NULL)
-    {
-        return;
-    }
-    if (root->left)
-    {
 
-        inorder(root->left);
-    }
-    cout << root->data << ",";
-    if (root->right != NULL)
-    {
-        inorder(root->right);
-    }
-}
 int main()
 {
     Node *root = NULL;
+
     root = insertNode(root, 60);
     root = insertNode(root, 40);
 
