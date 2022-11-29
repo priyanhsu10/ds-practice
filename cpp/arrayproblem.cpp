@@ -32,6 +32,49 @@ void sumOfSubarray(int ar[], int n)
         }
     }
 }
+// max sum cadence algorithm
+void maxsumSubArrayUsingCadenceAlgo(int ar[], int n)
+{
+
+    cout << "cadence algo" << endl;
+    int sm = 0;
+    int mx = INT_MIN;
+    for (int i = 0; i < n; i++)
+    {
+        sm += ar[i];
+
+        if (sm < 0)
+        {
+            sm = 0;
+        }
+        mx = max(mx, sm);
+    }
+    cout << mx << endl
+         << sm;
+}
+void maxSumOfSubarray(int ar[], int n)
+{
+    int mx = -1;
+
+    for (int i = 0; i < n; i++)
+    {
+
+        for (int j = i; j < n; j++)
+        {
+            int sm = 0;
+            for (int k = i; k <= j; k++)
+            {
+
+                sm += ar[k];
+                cout << ar[k] << " ";
+            }
+            cout << endl;
+            mx = max(sm, mx);
+        }
+    }
+    cout << endl
+         << "max:" << mx;
+}
 
 // problem -2
 void arithmaticArray(int ar[], int n)
@@ -104,12 +147,62 @@ void firstRepeatingElement(int ar[], int n)
         }
         if (minindex == INT_MAX)
         {
-            cout << "element are uniq";
+            cout << "elements are uniq";
         }
     }
     cout << minindex;
 }
+// problem -4
+// subarray with given sum
 
+void subarWithGivenSum(int ar[], int l, int s)
+{
+
+    int st = -1, end = -1;
+    int currentsum = ar[0];
+    while (currentsum != s && st < l)
+    {
+        currentsum += ar[end];
+        if (currentsum < s && end < l)
+        {
+            end++;
+        }
+        else if (s < currentsum)
+        {
+            st++;
+            end = st + 1;
+            currentsum = ar[st];
+        }
+        else if (currentsum == s)
+        {
+            break;
+        }
+    }
+    cout << st << " " << end;
+}
+// problem -5
+// smallest positve missing number
+
+void smallestMissing(int ar[], int l)
+{
+
+    bool check[l];
+    for (int i = 0; i < l; i++)
+    {
+        if (ar[i] >= 0)
+        {
+            check[ar[i]] = true;
+        }
+    }
+    for (int i = 0; i < l; i++)
+    {
+        if (check[i] == false)
+        {
+            cout << i;
+            break;
+        }
+    }
+}
 //  subsequence
 //  number of subquence of an array with n element =2^n
 
@@ -125,7 +218,17 @@ int main()
     // int a[] = {1, 2, 0, 7, 2, 0, 2, 2};
     // recordBreaker(a, (int)(sizeof(a) / sizeof(int)));
 
-    int a[] = {1, 5, 3, 4, 3, 5, 6};
-    firstRepeatingElement(a, (int)(sizeof(a) / sizeof(int)));
+    // int a[] = {1, 5, 3, 4, 3, 5, 6};
+    // firstRepeatingElement(a, (int)(sizeof(a) / sizeof(int)));
+    // int a[] = {1, 2, 3, 8};
+    // subarWithGivenSum(a, (int)(sizeof(a) / sizeof(int)), 16);
+    // int a[] = {0, -9, 1, 3, -4, 5};
+    // smallestMissing(a, (int)(sizeof(a) / sizeof(int)));
+
+    int a[] = {1, -4, 2, 1};
+    int l = (int)(sizeof(a) / sizeof(int));
+    maxSumOfSubarray(a, l);
+    sumOfSubarray(a, l);
+    maxsumSubArrayUsingCadenceAlgo(a, l);
     return 0;
 }
