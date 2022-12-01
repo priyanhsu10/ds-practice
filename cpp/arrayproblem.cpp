@@ -52,6 +52,8 @@ void maxsumSubArrayUsingCadenceAlgo(int ar[], int n)
     cout << mx << endl
          << sm;
 }
+// problem
+
 void maxSumOfSubarray(int ar[], int n)
 {
     int mx = -1;
@@ -120,7 +122,7 @@ void recordBreaker(int ar[], int n)
     }
 }
 
-// problem 3 first repeating element
+// problem 4 first repeating element
 
 void firstRepeatingElement(int ar[], int n)
 {
@@ -152,7 +154,7 @@ void firstRepeatingElement(int ar[], int n)
     }
     cout << minindex;
 }
-// problem -4
+// problem -5
 // subarray with given sum
 
 void subarWithGivenSum(int ar[], int l, int s)
@@ -205,8 +207,60 @@ void smallestMissing(int ar[], int l)
 }
 //  subsequence
 //  number of subquence of an array with n element =2^n
+// problem-7
+// maximum circular subarray sum
+int kadence(int ar[], int n)
+{
 
+    int sm = 0;
+    int mx = INT_MIN;
+    for (int i = 0; i < n; i++)
+    {
+
+        sm += ar[i];
+        if (sm < 0)
+        {
+            sm = 0;
+        }
+        mx = max(mx, sm);
+    }
+    return mx;
+}
+
+void maxCircularSubArraySum(int ar[], int n)
+{
+    int nonwrapsum = kadence(ar, n);
+
+    // change sign of each element and  sm+(cadence(changed sign array))
+    int sm = 0;
+    for (int i = 0; i < n; i++)
+    {
+        sm += ar[i];
+        ar[i] = -ar[i];
+    }
+    int wrapsum = sm + kadence(ar, n);
+    cout << max(nonwrapsum, wrapsum) << endl;
+}
+
+// pair of sum of array
+bool pairSum(int ar[], int n, int k)
+{
+
+    for (int i = 0; i < n; i++)
+    {
+        int df = k - ar[i];
+        for (int j = i + 1; j < n; j++)
+        {
+            if (ar[j] == df)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
 // note: Every subarray is subsequence but every subsequence is not a subarray
+
 int main()
 {
     // int a[] = {0, -9, 1, 3, -4, 5};
@@ -225,10 +279,18 @@ int main()
     // int a[] = {0, -9, 1, 3, -4, 5};
     // smallestMissing(a, (int)(sizeof(a) / sizeof(int)));
 
-    int a[] = {1, -4, 2, 1};
-    int l = (int)(sizeof(a) / sizeof(int));
-    maxSumOfSubarray(a, l);
-    sumOfSubarray(a, l);
-    maxsumSubArrayUsingCadenceAlgo(a, l);
+    // int a[] = {1, -4, 2, 1};
+    // int l = (int)(sizeof(a) / sizeof(int));
+    // maxSumOfSubarray(a, l);
+    // sumOfSubarray(a, l);
+    // maxsumSubArrayUsingCadenceAlgo(a, l);
+    // int a[] = {1, 4, -6, 7, 5, -4};         // 7,5=12
+    // int a2[] = {4, -4, 6, -6, 10, -11, 12}; // 12,4,-4,-6,10=22
+    // int l = (int)(sizeof(a) / sizeof(int));
+    // maxCircularSubArraySum(a, l);
+    // maxCircularSubArraySum(a2, (int)(sizeof(a2) / sizeof(int)));
+
+    int a[] = {2, 4, 7, 11, 14, 16, 20, 21};
+    cout << pairSum(a, 8, 11);
     return 0;
 }
